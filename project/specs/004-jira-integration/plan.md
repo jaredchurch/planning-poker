@@ -54,10 +54,6 @@ src/
 ├── services/
 │   ├── jiraAuthService.ts
 │   └── jiraApiService.ts
-├── hooks/
-│   └── useJiraIntegration.ts
 ├── types/
 │   └── jira.ts
-└── utils/
-    └── jiraHelpers.ts
 ```

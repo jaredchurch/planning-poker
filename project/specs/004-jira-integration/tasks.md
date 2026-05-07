@@ -55,7 +55,7 @@
 - [ ] T013 [P] [US2] Create JiraIssueList component in src/components/JiraIssueList.tsx
 - [ ] T014 [US2] Wire fetch handlers (JQL, Sprint, Epic) in JiraFetchForm
 - [ ] T015 [US2] Implement loading indicator during fetch
-- [ ] T016 [US2] Handle errors (401, 403, empty results, CORS failures) with user-friendly messages
+- [ ] T016 [US2] Handle errors (401, 403, empty results, CORS failures, large result sets >100, connection failures) with user-friendly messages
 
 **Checkpoint**: Host can fetch and browse Jira issues
 
@@ -73,6 +73,7 @@
 - [ ] T018 [US3] Implement "Add to Session" handler (convert selected JiraIssues → Items, sync to Peers)
 - [ ] T019 [US3] Wire "Add to Session" into session state manager (from 001-exit-quit feature)
 - [ ] T020 [US3] Handle duplicate issue keys with conflict resolution dialog
+- [ ] T021 [US2] Implement local Issue Summary editing in JiraIssueList (FR-006)
 
 **Checkpoint**: Host can select and add Jira issues to the voting session
 

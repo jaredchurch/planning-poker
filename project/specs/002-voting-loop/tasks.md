@@ -101,6 +101,7 @@
 - [ ] T028 Handle voter disconnect during voting (remove vote from tally per 001-exit-quit contract)
 - [ ] T029 Enforce positive integers for Integers scale (FR-001 constraint)
 - [ ] T030 Add unanimous vote visual indicator (all votes same value)
+- [ ] T031 [US2] Implement consensus override control in Host dashboard (FR-012)
 
 ---
 

@@ -56,8 +56,6 @@ src/
 │   ├── VoteResults.tsx
 │   ├── ItemList.tsx
 │   └── FocusButton.tsx
-├── hooks/
-│   └── useVoting.ts
 ├── services/
 │   ├── votingService.ts
 │   └── consensusService.ts
