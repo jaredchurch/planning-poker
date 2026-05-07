@@ -1,8 +1,8 @@
-# Specification Quality Checklist: Jira Integration
+# Specification Quality Checklist: Room Management & Presence
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-05-07
-**Feature**: [specs/004-jira-integration/spec.md](spec.md)
+**Feature**: [specs/005-room-management/spec.md](spec.md)
 
 ## Content Quality
 
@@ -32,4 +32,4 @@
 ## Notes
 
 - Items marked incomplete require spec updates before `/speckit.clarify` or `/speckit.plan`
-- All items pass after spec cleanup.
+- Spec is clean and well-structured. All items pass.
