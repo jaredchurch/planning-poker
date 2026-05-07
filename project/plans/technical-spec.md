@@ -12,6 +12,7 @@
 - **Room Creation**: Host generates a unique URL/ID.
 - **Joining**: Peers enter the room via URL. No registration/login required.
 - **User Identity**: Users provide a simple display name upon joining.
+- **Session Recovery**: Host MUST persist the active session state (Room ID, Item List, and Current Item) to `localStorage`. Upon page reload or crash recovery, the Host MUST automatically restore the session and allow Peers to reconnect using the same Room ID.
 
 ### 2.2 Jira Integration (Host Only)
 - **Configuration**: Host inputs Jira Domain, Email, and API Token.
