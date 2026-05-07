@@ -23,11 +23,11 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Initialize React project with Vite at project root
-- [ ] T002 [P] Install and configure Tailwind CSS
-- [ ] T003 [P] Install PeerJS dependency
-- [ ] T004 [P] Install and configure Jest + React Testing Library
-- [ ] T005 [P] Create project directory structure per plan.md
+- [x] T001 Initialize React project with Vite at project root
+- [x] T002 [P] Install and configure Tailwind CSS
+- [x] T003 [P] Install PeerJS dependency
+- [x] T004 [P] Install and configure Jest + React Testing Library
+- [x] T005 [P] Create project directory structure per plan.md
 
 ---
 
@@ -35,11 +35,11 @@
 
 **Purpose**: Core types and shared services that MUST be complete before any user story
 
-- [ ] T006 Create session types (Session, Participant) in src/types/session.ts
-- [ ] T007 Create message protocol types from contracts/message-protocol.md in src/types/messages.ts
-- [ ] T008 Implement PeerJS connection hook (usePeerConnection) in src/hooks/usePeerConnection.ts
-- [ ] T009 Implement session state manager (sessionManager) in src/services/sessionManager.ts
-- [ ] T010 Implement message protocol helpers in src/services/messageProtocol.ts
+- [x] T006 Create session types (Session, Participant) in src/types/session.ts
+- [x] T007 Create message protocol types from contracts/message-protocol.md in src/types/messages.ts
+- [x] T008 Implement PeerJS connection hook (usePeerConnection) in src/hooks/usePeerConnection.ts
+- [x] T009 Implement session state manager (sessionManager) in src/services/sessionManager.ts
+- [x] T010 Implement message protocol helpers in src/services/messageProtocol.ts
 
 **Checkpoint**: Foundation ready — user story implementation can begin
 
@@ -53,12 +53,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Create ConfirmDialog component in src/components/ConfirmDialog.tsx
-- [ ] T012 [P] [US1] Create ExitButton component in src/components/ExitButton.tsx
-- [ ] T013 [US1] Implement exit handler in sessionManager (remove Peer, broadcast participant-update)
-- [ ] T014 [US1] Wire ExitButton into Peer dashboard view
-- [ ] T015 [US1] Implement redirect-to-home behavior on Peer exit
-- [ ] T016 [US1] Handle exit message protocol (Peer sends `exit`, Host processes, removes vote)
+- [x] T011 [P] [US1] Create ConfirmDialog component in src/components/ConfirmDialog.tsx
+- [x] T012 [P] [US1] Create ExitButton component in src/components/ExitButton.tsx
+- [x] T013 [US1] Implement exit handler in sessionManager (remove Peer, broadcast participant-update)
+- [x] T014 [US1] Wire ExitButton into Peer dashboard view
+- [x] T015 [US1] Implement redirect-to-home behavior on Peer exit
+- [x] T016 [US1] Handle exit message protocol (Peer sends `exit`, Host processes, removes vote)
 
 **Checkpoint**: Peer can exit independently — participant list updates and Peer is redirected
 
@@ -72,11 +72,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T017 [P] [US2] Create CloseSessionButton component in src/components/CloseSessionButton.tsx
-- [ ] T018 [US2] Implement session-closed broadcast handler in sessionManager
-- [ ] T019 [US2] Implement Peer-side session-closed message handler (show notification, redirect)
-- [ ] T020 [US2] Wire CloseSessionButton into Host dashboard view
-- [ ] T021 [US2] Implement Host-side cleanup (terminate all connections, clear local state, set session.status to "closed")
+- [x] T017 [P] [US2] Create CloseSessionButton component in src/components/CloseSessionButton.tsx
+- [x] T018 [US2] Implement session-closed broadcast handler in sessionManager
+- [x] T019 [US2] Implement Peer-side session-closed message handler (show notification, redirect)
+- [x] T020 [US2] Wire CloseSessionButton into Host dashboard view
+- [x] T021 [US2] Implement Host-side cleanup (terminate all connections, clear local state, set session.status to "closed")
 
 **Checkpoint**: Host can close session — all Peers notified and redirected
 
@@ -90,12 +90,12 @@
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Implement heartbeat (ping/pong) mechanism in src/hooks/useHeartbeat.ts
-- [ ] T023 [US3] Wire heartbeat into Peer connection lifecycle
-- [ ] T024 [US3] Implement Host-side timeout detection (remove Peer after 10s no pong)
-- [ ] T025 [US3] Implement Host-side disconnect detection (detect connection loss locally, show "Connection lost" notification)
-- [ ] T026 [US3] Implement Peer-side Host-disconnect notification ("Connection to Host lost")
-- [ ] T027 [US3] Add beforeunload handler for Host (prevent accidental close with confirmation dialog)
+- [x] T022 [US3] Implement heartbeat (ping/pong) mechanism in src/hooks/useHeartbeat.ts
+- [x] T023 [US3] Wire heartbeat into Peer connection lifecycle
+- [x] T024 [US3] Implement Host-side timeout detection (remove Peer after 10s no pong)
+- [x] T025 [US3] Implement Host-side disconnect detection (detect connection loss locally, show "Connection lost" notification)
+- [x] T026 [US3] Implement Peer-side Host-disconnect notification ("Connection to Host lost")
+- [x] T027 [US3] Add beforeunload handler for Host (prevent accidental close with confirmation dialog)
 
 **Checkpoint**: Unexpected disconnections are handled — participant list stays consistent
 
@@ -105,11 +105,11 @@
 
 **Purpose**: Edge cases, error handling, and cleanup
 
-- [ ] T028 Handle rejoining edge case (Peer rejoins as new connection per research.md)
-- [ ] T029 Handle last-user-reveal edge case (exit does not trigger auto-reveal per research.md)
-- [ ] T030 Clean up transient session state from Peer local storage on exit (FR-008)
-- [ ] T031 Create stub HomeScreen component in src/components/HomeScreen.tsx (redirect target for T015, T019)
-- [ ] T032 Create storage utility in src/utils/storage.ts (session state helpers for T030)
+- [x] T028 Handle rejoining edge case (Peer rejoins as new connection per research.md)
+- [x] T029 Handle last-user-reveal edge case (exit does not trigger auto-reveal per research.md)
+- [x] T030 Clean up transient session state from Peer local storage on exit (FR-008)
+- [x] T031 Create stub HomeScreen component in src/components/HomeScreen.tsx (redirect target for T015, T019)
+- [x] T032 Create storage utility in src/utils/storage.ts (session state helpers for T030)
 
 ---
 

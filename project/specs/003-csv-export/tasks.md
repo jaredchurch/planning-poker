@@ -9,8 +9,8 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Initialize React project with Vite at project root
-- [ ] T002 [P] Install and configure Jest + React Testing Library
+- [x] T001 Initialize React project with Vite at project root
+- [x] T002 [P] Install and configure Jest + React Testing Library
 
 ---
 
@@ -18,8 +18,8 @@
 
 **Purpose**: CSV generation utilities
 
-- [ ] T003 Create export types (SessionResult, ExportedItem, ExportConfig) in src/types/export.ts
-- [ ] T004 Implement RFC 4180 CSV formatter (escape commas, quotes, newlines) in src/utils/csvFormatter.ts
+- [x] T003 Create export types (SessionResult, ExportedItem, ExportConfig) in src/types/export.ts
+- [x] T004 Implement RFC 4180 CSV formatter (escape commas, quotes, newlines) in src/utils/csvFormatter.ts
 
 **Checkpoint**: CSV formatting utility ready
 
@@ -33,13 +33,13 @@
 
 ### Implementation
 
-- [ ] T005 [P] [US1] Create ExportButton component in src/components/ExportButton.tsx
-- [ ] T006 [P] [US1] Create ConsensusEditor component in src/components/ConsensusEditor.tsx
-- [ ] T007 [US1] Implement csvExportService (collect data, format, trigger download) in src/services/csvExportService.ts
-- [ ] T008 [US1] Implement file download via Blob in csvExportService
-- [ ] T009 [US1] Wire ExportButton into Host dashboard
-- [ ] T010 [US1] Add duplicate issue key detection and conflict resolution dialog
-- [ ] T011 [US1] Add mid-session export support (include all voted items up to now)
+- [x] T005 [P] [US1] Create ExportButton component in src/components/ExportButton.tsx
+- [x] T006 [P] [US1] Create ConsensusEditor component in src/components/ConsensusEditor.tsx
+- [x] T007 [US1] Implement csvExportService (collect data, format, trigger download) in src/services/csvExportService.ts
+- [x] T008 [US1] Implement file download via Blob in csvExportService
+- [x] T009 [US1] Wire ExportButton into Host dashboard
+- [x] T010 [US1] Add duplicate issue key detection and conflict resolution dialog
+- [x] T011 [US1] Add mid-session export support (include all voted items up to now)
 
 **Checkpoint**: Host can export CSV at any point during or after session
 

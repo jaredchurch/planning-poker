@@ -46,3 +46,50 @@ npm install -g opencode-ai
 # Spec Kit
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
+
+---
+
+## Planning Poker App
+
+A serverless, P2P planning poker application built with React, Vite, PeerJS, and Tailwind CSS. No backend required — all data flows directly between browsers via WebRTC.
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Setup
+
+```bash
+cd project
+npm install
+```
+
+### Run (Development)
+
+```bash
+cd project
+npm run dev
+```
+
+This starts a Vite dev server (default: `http://localhost:5173`). Open the URL in your browser.
+
+To test multi-user scenarios, open the app in multiple browser tabs or windows:
+1. **Tab 1**: Click "Create Room" to start as Host
+2. **Tab 2**: Click "Join Room" and enter the 6-character Room ID shown in Tab 1
+
+### Build for Production
+
+```bash
+cd project
+npm run build
+```
+
+Output goes to `project/dist/`.
+
+### Test
+
+```bash
+cd project
+npx jest
+```

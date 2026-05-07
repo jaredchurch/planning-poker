@@ -9,11 +9,11 @@
 
 **Purpose**: Project initialization
 
-- [ ] T001 Initialize React project with Vite at project root
-- [ ] T002 [P] Install and configure Tailwind CSS
-- [ ] T003 [P] Install PeerJS dependency
-- [ ] T004 [P] Install and configure Jest + React Testing Library
-- [ ] T005 [P] Create project directory structure per plan.md
+- [x] T001 Initialize React project with Vite at project root
+- [x] T002 [P] Install and configure Tailwind CSS
+- [x] T003 [P] Install PeerJS dependency
+- [x] T004 [P] Install and configure Jest + React Testing Library
+- [x] T005 [P] Create project directory structure per plan.md
 
 ---
 
@@ -21,13 +21,13 @@
 
 **Purpose**: Core room types and PeerJS connection infrastructure
 
-- [ ] T006 Create room types (Room, Participant, PresenceList) in src/types/room.ts
-- [ ] T007 Create message types for room protocol in src/types/messages.ts
-- [ ] T008 Implement roomIdGenerator (6-char alphanumeric) in src/utils/roomIdGenerator.ts
-- [ ] T009 Implement peerConnectionService (PeerJS init, connect, disconnect) in src/services/peerConnectionService.ts
-- [ ] T010 Implement roomService (create, join, leave, presence broadcast) in src/services/roomService.ts
-- [ ] T011 Implement useRoom hook (React integration for room state) in src/hooks/useRoom.ts
-- [ ] T012 [P] Implement usePresence hook (React integration for presence list) in src/hooks/usePresence.ts
+- [x] T006 Create room types (Room, Participant, PresenceList) in src/types/room.ts
+- [x] T007 Create message types for room protocol in src/types/messages.ts
+- [x] T008 Implement roomIdGenerator (6-char alphanumeric) in src/utils/roomIdGenerator.ts
+- [x] T009 Implement peerConnectionService (PeerJS init, connect, disconnect) in src/services/peerConnectionService.ts
+- [x] T010 Implement roomService (create, join, leave, presence broadcast) in src/services/roomService.ts
+- [x] T011 Implement useRoom hook (React integration for room state) in src/hooks/useRoom.ts
+- [x] T012 [P] Implement usePresence hook (React integration for presence list) in src/hooks/usePresence.ts
 
 **Checkpoint**: Foundation ready — room creation and PeerJS connections work
 
@@ -41,12 +41,12 @@
 
 ### Implementation
 
-- [ ] T013 [P] [US1] Create LandingPage component in src/components/LandingPage.tsx
-- [ ] T014 [P] [US1] Create CreateRoomForm component in src/components/CreateRoomForm.tsx
-- [ ] T015 [US1] Create CopyLinkButton component in src/components/CopyLinkButton.tsx
-- [ ] T016 [US1] Wire Host room creation flow (create Peer, link to roomService)
-- [ ] T017 [US1] Implement clipboard copy for invite link
-- [ ] T018 [US1] Add display name validation (min 2 chars, FR-007)
+- [x] T013 [P] [US1] Create LandingPage component in src/components/LandingPage.tsx
+- [x] T014 [P] [US1] Create CreateRoomForm component in src/components/CreateRoomForm.tsx
+- [x] T015 [US1] Create CopyLinkButton component in src/components/CopyLinkButton.tsx
+- [x] T016 [US1] Wire Host room creation flow (create Peer, link to roomService)
+- [x] T017 [US1] Implement clipboard copy for invite link
+- [x] T018 [US1] Add display name validation (min 2 chars, FR-007)
 
 **Checkpoint**: Host can create room and share invite link
 
@@ -60,11 +60,11 @@
 
 ### Implementation
 
-- [ ] T019 [P] [US2] Create JoinRoomForm component in src/components/JoinRoomForm.tsx
-- [ ] T020 [US2] Implement deep-link parsing (read roomId from URL hash)
-- [ ] T021 [US2] Wire Peer join flow (connect to Host PeerJS ID, send join message)
-- [ ] T022 [US2] Implement Host-side join handler (add to presence, send joined response)
-- [ ] T023 [US2] Handle duplicate names (append suffix " (2)" etc.)
+- [x] T019 [P] [US2] Create JoinRoomForm component in src/components/JoinRoomForm.tsx
+- [x] T020 [US2] Implement deep-link parsing (read roomId from URL hash)
+- [x] T021 [US2] Wire Peer join flow (connect to Host PeerJS ID, send join message)
+- [x] T022 [US2] Implement Host-side join handler (add to presence, send joined response)
+- [x] T023 [US2] Handle duplicate names (append suffix " (2)" etc.)
 
 **Checkpoint**: Peer can join existing room
 
@@ -80,10 +80,10 @@
 
 ### Implementation
 
-- [ ] T024 [P] [US3] Create ParticipantList component in src/components/ParticipantList.tsx
-- [ ] T025 [US3] Implement presence-update broadcast on join/leave in roomService
-- [ ] T026 [US3] Wire ParticipantList into Host and Peer dashboards
-- [ ] T027 [US3] Implement connection state display ("Connecting...", "Room Not Found")
+- [x] T024 [P] [US3] Create ParticipantList component in src/components/ParticipantList.tsx
+- [x] T025 [US3] Implement presence-update broadcast on join/leave in roomService
+- [x] T026 [US3] Wire ParticipantList into Host and Peer dashboards
+- [x] T027 [US3] Implement connection state display ("Connecting...", "Room Not Found")
 
 **Checkpoint**: All participants see live presence updates
 
@@ -93,10 +93,10 @@
 
 **Purpose**: Edge cases and error handling
 
-- [ ] T028 Handle invalid Room ID (show "Room Not Found" error)
-- [ ] T029 Handle slow connection (show "Connecting..." state during WebRTC handshake)
-- [ ] T030 Add session recovery (Host refreshes → reconnect with same roomId)
-- [ ] T031 Implement Peer leave handler in roomService (remove from presence, broadcast update)
+- [x] T028 Handle invalid Room ID (show "Room Not Found" error)
+- [x] T029 Handle slow connection (show "Connecting..." state during WebRTC handshake)
+- [x] T030 Add session recovery (Host refreshes → reconnect with same roomId)
+- [x] T031 Implement Peer leave handler in roomService (remove from presence, broadcast update)
 
 ---
 

@@ -7,8 +7,8 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Initialize React project with Vite at project root
-- [ ] T002 [P] Install and configure Jest + React Testing Library
+- [x] T001 Initialize React project with Vite at project root
+- [x] T002 [P] Install and configure Jest + React Testing Library
 
 ---
 
@@ -16,10 +16,10 @@
 
 **Purpose**: Jira API client and auth services
 
-- [ ] T003 Create Jira types (JiraConfig, JiraIssue, FetchQuery) in src/types/jira.ts
-- [ ] T004 Implement jiraAuthService (store/retrieve Domain+Email in localStorage) in src/services/jiraAuthService.ts
-- [ ] T005 Implement jiraApiService (JQL, Sprint, Epic fetches via fetch) in src/services/jiraApiService.ts
-- [ ] T006 Implement Test Connection endpoint call in jiraApiService
+- [x] T003 Create Jira types (JiraConfig, JiraIssue, FetchQuery) in src/types/jira.ts
+- [x] T004 Implement jiraAuthService (store/retrieve Domain+Email in localStorage) in src/services/jiraAuthService.ts
+- [x] T005 Implement jiraApiService (JQL, Sprint, Epic fetches via fetch) in src/services/jiraApiService.ts
+- [x] T006 Implement Test Connection endpoint call in jiraApiService
 
 **Checkpoint**: Jira API client ready — can authenticate and fetch
 
@@ -33,11 +33,11 @@
 
 ### Implementation
 
-- [ ] T007 [P] [US1] Create JiraConfigPanel component in src/components/JiraConfigPanel.tsx
-- [ ] T008 [P] [US1] Create TestConnectionButton component in src/components/TestConnectionButton.tsx
-- [ ] T009 [US1] Wire credential persistence in JiraConfigPanel (Domain/Email → localStorage, Token → session)
-- [ ] T010 [US1] Implement "Clear Credentials" action (remove all Jira data)
-- [ ] T011 [US1] Add session-scoped token handling (require re-entry on page refresh with pre-filled Domain/Email)
+- [x] T007 [P] [US1] Create JiraConfigPanel component in src/components/JiraConfigPanel.tsx
+- [x] T008 [P] [US1] Create TestConnectionButton component in src/components/TestConnectionButton.tsx
+- [x] T009 [US1] Wire credential persistence in JiraConfigPanel (Domain/Email → localStorage, Token → session)
+- [x] T010 [US1] Implement "Clear Credentials" action (remove all Jira data)
+- [x] T011 [US1] Add session-scoped token handling (require re-entry on page refresh with pre-filled Domain/Email)
 
 **Checkpoint**: Host can configure and validate Jira credentials securely
 
@@ -51,11 +51,11 @@
 
 ### Implementation
 
-- [ ] T012 [P] [US2] Create JiraFetchForm component in src/components/JiraFetchForm.tsx
-- [ ] T013 [P] [US2] Create JiraIssueList component in src/components/JiraIssueList.tsx
-- [ ] T014 [US2] Wire fetch handlers (JQL, Sprint, Epic) in JiraFetchForm
-- [ ] T015 [US2] Implement loading indicator during fetch
-- [ ] T016 [US2] Handle errors (401, 403, empty results, CORS failures, large result sets >100, connection failures) with user-friendly messages
+- [x] T012 [P] [US2] Create JiraFetchForm component in src/components/JiraFetchForm.tsx
+- [x] T013 [P] [US2] Create JiraIssueList component in src/components/JiraIssueList.tsx
+- [x] T014 [US2] Wire fetch handlers (JQL, Sprint, Epic) in JiraFetchForm
+- [x] T015 [US2] Implement loading indicator during fetch
+- [x] T016 [US2] Handle errors (401, 403, empty results, CORS failures, large result sets >100, connection failures) with user-friendly messages
 
 **Checkpoint**: Host can fetch and browse Jira issues
 
@@ -69,11 +69,11 @@
 
 ### Implementation
 
-- [ ] T017 [US3] Add checkbox selection to JiraIssueList
-- [ ] T018 [US3] Implement "Add to Session" handler (convert selected JiraIssues → Items, sync to Peers)
-- [ ] T019 [US3] Wire "Add to Session" into session state manager (from 001-exit-quit feature)
-- [ ] T020 [US3] Handle duplicate issue keys with conflict resolution dialog
-- [ ] T021 [US2] Implement local Issue Summary editing in JiraIssueList (FR-006)
+- [x] T017 [US3] Add checkbox selection to JiraIssueList
+- [x] T018 [US3] Implement "Add to Session" handler (convert selected JiraIssues → Items, sync to Peers)
+- [x] T019 [US3] Wire "Add to Session" into session state manager (from 001-exit-quit feature)
+- [x] T020 [US3] Handle duplicate issue keys with conflict resolution dialog
+- [x] T021 [US2] Implement local Issue Summary editing in JiraIssueList (FR-006)
 
 **Checkpoint**: Host can select and add Jira issues to the voting session
 

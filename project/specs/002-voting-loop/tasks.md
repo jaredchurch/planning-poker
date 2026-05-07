@@ -16,10 +16,10 @@
 
 **Purpose**: Project initialization
 
-- [ ] T001 Initialize React project with Vite at project root
-- [ ] T002 [P] Install and configure Tailwind CSS
-- [ ] T003 [P] Install PeerJS dependency
-- [ ] T004 [P] Install and configure Jest + React Testing Library
+- [x] T001 Initialize React project with Vite at project root
+- [x] T002 [P] Install and configure Tailwind CSS
+- [x] T003 [P] Install PeerJS dependency
+- [x] T004 [P] Install and configure Jest + React Testing Library
 
 ---
 
@@ -27,11 +27,11 @@
 
 **Purpose**: Core voting types and services shared across all stories
 
-- [ ] T005 Create voting types (VoteScale, Vote, VotingRound, Item) in src/types/voting.ts
-- [ ] T006 Create message types for voting protocol in src/types/messages.ts
-- [ ] T007 Define voting scale configurations (Fibonacci, T-Shirt, Integers) in src/utils/scales.ts
-- [ ] T008 Implement votingService (vote recording, reveal toggle, round management) in src/services/votingService.ts
-- [ ] T009 Implement consensusService (mode calc, spread detection, override) in src/services/consensusService.ts
+- [x] T005 Create voting types (VoteScale, Vote, VotingRound, Item) in src/types/voting.ts
+- [x] T006 Create message types for voting protocol in src/types/messages.ts
+- [x] T007 Define voting scale configurations (Fibonacci, T-Shirt, Integers) in src/utils/scales.ts
+- [x] T008 Implement votingService (vote recording, reveal toggle, round management) in src/services/votingService.ts
+- [x] T009 Implement consensusService (mode calc, spread detection, override) in src/services/consensusService.ts
 
 **Checkpoint**: Foundation ready — voting types and services exist
 
@@ -45,11 +45,11 @@
 
 ### Implementation
 
-- [ ] T010 [P] [US1] Create VotingCard component in src/components/VotingCard.tsx
-- [ ] T011 [P] [US1] Create VotingBoard component (card layout per scale) in src/components/VotingBoard.tsx
-- [ ] T012 [US1] Implement vote handler in votingService (record vote, broadcast vote-update)
-- [ ] T013 [US1] Wire VotingBoard into Peer dashboard view
-- [ ] T014 [US1] Implement vote-change (re-click different card before reveal)
+- [x] T010 [P] [US1] Create VotingCard component in src/components/VotingCard.tsx
+- [x] T011 [P] [US1] Create VotingBoard component (card layout per scale) in src/components/VotingBoard.tsx
+- [x] T012 [US1] Implement vote handler in votingService (record vote, broadcast vote-update)
+- [x] T013 [US1] Wire VotingBoard into Peer dashboard view
+- [x] T014 [US1] Implement vote-change (re-click different card before reveal)
 
 **Checkpoint**: Peer can cast and change votes — Host sees status updates
 
@@ -63,13 +63,13 @@
 
 ### Implementation
 
-- [ ] T015 [P] [US2] Create RevealButton component in src/components/RevealButton.tsx
-- [ ] T016 [P] [US2] Create VoteResults component (card flip display) in src/components/VoteResults.tsx
-- [ ] T017 [US2] Implement reveal handler in votingService (set isRevealed, broadcast reveal)
-- [ ] T018 [US2] Implement auto-reveal toggle and trigger logic in votingService
-- [ ] T019 [US2] Implement consensus display in VoteResults
-- [ ] T020 [US2] Implement "Next Item" handler (clear votes, new round)
-- [ ] T021 [US2] Implement "Re-vote" handler (clear round, return to hidden)
+- [x] T015 [P] [US2] Create RevealButton component in src/components/RevealButton.tsx
+- [x] T016 [P] [US2] Create VoteResults component (card flip display) in src/components/VoteResults.tsx
+- [x] T017 [US2] Implement reveal handler in votingService (set isRevealed, broadcast reveal)
+- [x] T018 [US2] Implement auto-reveal toggle and trigger logic in votingService
+- [x] T019 [US2] Implement consensus display in VoteResults
+- [x] T020 [US2] Implement "Next Item" handler (clear votes, new round)
+- [x] T021 [US2] Implement "Re-vote" handler (clear round, return to hidden)
 
 **Checkpoint**: Host can reveal votes, auto-reveal works, consensus displayed
 
@@ -83,11 +83,11 @@
 
 ### Implementation
 
-- [ ] T022 [P] [US3] Create ItemList component in src/components/ItemList.tsx
-- [ ] T023 [P] [US3] Create FocusButton component in src/components/FocusButton.tsx
-- [ ] T024 [US3] Implement focus-item handler in votingService (set active item, broadcast focus-item)
-- [ ] T025 [US3] Wire ItemList and FocusButton into Host dashboard
-- [ ] T026 [US3] Implement Peer-side focus-item handler (switch active item display)
+- [x] T022 [P] [US3] Create ItemList component in src/components/ItemList.tsx
+- [x] T023 [P] [US3] Create FocusButton component in src/components/FocusButton.tsx
+- [x] T024 [US3] Implement focus-item handler in votingService (set active item, broadcast focus-item)
+- [x] T025 [US3] Wire ItemList and FocusButton into Host dashboard
+- [x] T026 [US3] Implement Peer-side focus-item handler (switch active item display)
 
 **Checkpoint**: Host can change active item — all Peers follow in real-time
 
@@ -97,11 +97,11 @@
 
 **Purpose**: Edge cases, late joiners, zero/negative enforcement
 
-- [ ] T027 Handle late joiner edge case (show active item and voting board on join)
-- [ ] T028 Handle voter disconnect during voting (remove vote from tally per 001-exit-quit contract)
-- [ ] T029 Enforce positive integers for Integers scale (FR-001 constraint)
-- [ ] T030 Add unanimous vote visual indicator (all votes same value)
-- [ ] T031 [US2] Implement consensus override control in Host dashboard (FR-012)
+- [x] T027 Handle late joiner edge case (show active item and voting board on join)
+- [x] T028 Handle voter disconnect during voting (remove vote from tally per 001-exit-quit contract)
+- [x] T029 Enforce positive integers for Integers scale (FR-001 constraint)
+- [x] T030 Add unanimous vote visual indicator (all votes same value)
+- [x] T031 [US2] Implement consensus override control in Host dashboard (FR-012)
 
 ---
 
