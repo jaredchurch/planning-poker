@@ -1,6 +1,6 @@
 export function parseRoomIdFromHash(): string | null {
-  const match = window.location.hash.match(/^#\/join\/([A-Za-z0-9]{6})$/)
-  return match ? match[1].toUpperCase() : null
+  const match = window.location.hash.match(/^#\/join\/(.+)$/)
+  return match ? match[1] : null
 }
 
 export function buildInviteLink(roomId: string): string {

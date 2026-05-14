@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "npx peerjs --port 9342 --key peerjs --path /peerjs & vite",
+    "dev:peer": "npx peerjs --port 9342 --key peerjs --path /peerjs",
     "build": "vite build",
     "test": "npx jest"
   },
@@ -27,6 +28,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "peer": "^1.0.2",
     "tailwindcss": "^4.2.4",
     "ts-jest": "^29.4.9",
     "typescript": "^6.0.3",

@@ -200,7 +200,7 @@ function App() {
   }, [room, updateParticipants])
 
   const handleCreateRoom = useCallback(async (name: string) => {
-    const newPeer = createPeer()
+    const newPeer = createPeer({ debug: 3 })
     newPeer.on('open', (id) => {
       handleRoomCreated(newPeer, id, name)
     })
@@ -211,7 +211,7 @@ function App() {
 
   const handleJoinRoom = useCallback(async (roomId: string, name: string) => {
     setConnectionStatus('Connecting...')
-    const newPeer = createPeer()
+    const newPeer = createPeer({ debug: 3 })
     newPeer.on('open', async () => {
       try {
         const conn = await connectToPeer(newPeer, roomId)
@@ -555,6 +555,7 @@ function App() {
         onCreateRoom={handleCreateRoom}
         onJoinRoom={handleJoinRoom}
         roomIdFromUrl={roomIdFromUrl ?? undefined}
+        connectionStatus={connectionStatus}
       />
     </div>
   )

@@ -21,7 +21,7 @@ export function JoinRoomForm({ onJoin, roomId: initialRoomId }: JoinRoomFormProp
       return
     }
     setError('')
-    onJoin(roomId.trim().toUpperCase(), name.trim())
+    onJoin(roomId.trim(), name.trim())
   }
 
   return (
