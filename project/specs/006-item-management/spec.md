@@ -2,7 +2,7 @@
 
 **Feature Branch**: `006-item-management`  
 **Created**: 2026-05-14  
-**Status**: Draft  
+**Status**: Finalized  
 **Input**: User description: "Item Management (Backlog CRUD): Allow the Host to manually add, edit, delete, and reorder items in the session list, including non-Jira items."
 
 ## User Scenarios & Testing *(mandatory)*

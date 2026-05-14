@@ -2,7 +2,7 @@
 
 **Feature Branch**: `008-ui-layout`  
 **Created**: 2026-05-14  
-**Status**: Draft  
+**Status**: Finalized  
 **Input**: User description: "Responsive App Shell & UI Layout: Define global navigation, screen transitions, and mobile-specific adaptations (like collapsing the participant list) to ensure a polished experience across devices."
 
 ## User Scenarios & Testing *(mandatory)*

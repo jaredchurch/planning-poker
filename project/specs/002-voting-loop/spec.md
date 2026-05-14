@@ -2,7 +2,7 @@
 
 **Feature Branch**: `002-voting-loop`  
 **Created**: 2026-05-07  
-**Status**: Draft  
+**Status**: Finalized  
 **Input**: Items 1 from user request: "Core Voting Loop"
 
 ## User Scenarios & Testing *(mandatory)*

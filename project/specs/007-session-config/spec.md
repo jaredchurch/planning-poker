@@ -2,7 +2,7 @@
 
 **Feature Branch**: `007-session-config`  
 **Created**: 2026-05-14  
-**Status**: Draft  
+**Status**: Finalized  
 **Input**: User description: "Session Configuration & Host Settings: Allow the Host to manage session rules, including voting scales, auto-reveal toggles, consensus rules, and room privacy/locking."
 
 ## User Scenarios & Testing *(mandatory)*

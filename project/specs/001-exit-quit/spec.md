@@ -2,7 +2,7 @@
 
 **Feature Branch**: `001-exit-quit`  
 **Created**: 2026-05-07  
-**Status**: Draft  
+**Status**: Finalized  
 **Input**: User description: "exitquit"
 
 ## User Scenarios & Testing *(mandatory)*
