@@ -13,17 +13,17 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create directory structure for settings components in `src/components/settings/`
-- [ ] T002 [P] Define `SessionSettings` and `ScaleType` types in `src/types/session.ts`
-- [ ] T003 [P] Extract scale definitions (Fibonacci, T-Shirt, Integers) to `src/utils/scales.ts`
+- [x] T001 Create directory structure for settings components in `src/components/settings/`
+- [x] T002 [P] Define `SessionSettings` and `ScaleType` types in `src/types/session.ts`
+- [x] T003 [P] Extract scale definitions (Fibonacci, T-Shirt, Integers) to `src/utils/scales.ts`
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Implement basic `sessionManager.ts` in `src/services/` with `SETTINGS_UPDATED` message handling
-- [ ] T005 [P] Create `useRoomSettings` hook in `src/hooks/useRoomSettings.ts` for accessing and updating session state
-- [ ] T006 [P] Create reusable `ToggleSwitch.tsx` component in `src/components/settings/ToggleSwitch.tsx`
+- [x] T004 Implement basic `sessionManager.ts` in `src/services/` with `SETTINGS_UPDATED` message handling
+- [x] T005 [P] Create `useRoomSettings` hook in `src/hooks/useRoomSettings.ts` for accessing and updating session state
+- [x] T006 [P] Create reusable `ToggleSwitch.tsx` component in `src/components/settings/ToggleSwitch.tsx`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -37,11 +37,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Create `ScaleSelector.tsx` in `src/components/settings/ScaleSelector.tsx`
-- [ ] T008 [US1] Implement scale change logic in `sessionManager.ts` including vote clearing/mapping prompt
-- [ ] T009 [US1] Integrate `ScaleSelector` into a temporary `SettingsPanel.tsx` in `src/components/settings/SettingsPanel.tsx`
-- [ ] T010 [US1] Update `VotingBoard.tsx` to render cards based on the `scaleType` from session settings
-- [ ] T011 [US1] Add unit tests for scale mapping logic in `tests/unit/utils/scales.test.ts`
+- [x] T007 [US1] Create `ScaleSelector.tsx` in `src/components/settings/ScaleSelector.tsx`
+- [x] T008 [US1] Implement scale change logic in `sessionManager.ts` including vote clearing/mapping prompt
+- [x] T009 [US1] Integrate `ScaleSelector` into a temporary `SettingsPanel.tsx` in `src/components/settings/SettingsPanel.tsx`
+- [x] T010 [US1] Update `VotingBoard.tsx` to render cards based on the `scaleType` from session settings
+- [x] T011 [US1] Add unit tests for scale mapping logic in `tests/unit/services/sessionManager.test.ts`
 
 **Checkpoint**: User Story 1 fully functional and testable.
 
@@ -55,9 +55,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Add `autoRevealEnabled` toggle to `SettingsPanel.tsx`
-- [ ] T013 [US2] Update `votingService.ts` to trigger reveal automatically if `autoRevealEnabled` is true and all have voted
-- [ ] T014 [US2] Add unit test for auto-reveal logic in `tests/unit/services/votingService.test.ts`
+- [x] T012 [US2] Add `autoRevealEnabled` toggle to `SettingsPanel.tsx`
+- [x] T013 [US2] Update `votingService.ts` to trigger reveal automatically if `autoRevealEnabled` is true and all have voted
+- [x] T014 [US2] Add unit test for auto-reveal logic in `tests/unit/services/votingService.test.ts`
 
 ---
 
@@ -69,9 +69,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T015 [US3] Add `isLocked` toggle to `SettingsPanel.tsx`
-- [ ] T016 [US3] Update `peerConnectionService.ts` to reject incoming connections when `isLocked` is true
-- [ ] T017 [US3] Implement "Room is Locked" error message UI in `JoinRoomForm.tsx`
+- [x] T015 [US3] Add `isLocked` toggle to `SettingsPanel.tsx`
+- [x] T016 [US3] Update `peerConnectionService.ts` to reject incoming connections when `isLocked` is true
+- [x] T017 [US3] Implement "Room is Locked" error message UI in `JoinRoomForm.tsx`
 
 ---
 
@@ -83,10 +83,10 @@
 
 ### Implementation for User Story 4
 
-- [ ] T018 [US4] Add `consensusAlgorithm` selector to `SettingsPanel.tsx`
-- [ ] T019 [US4] Implement "Average" and "Weighted" algorithms in `consensusService.ts`
-- [ ] T020 [US4] Update `VoteResults.tsx` to display consensus based on the selected algorithm
-- [ ] T021 [US4] Add unit tests for consensus algorithms in `tests/unit/services/consensusService.test.ts`
+- [x] T018 [US4] Add `consensusAlgorithm` selector to `SettingsPanel.tsx`
+- [x] T019 [US4] Implement "Average" and "Weighted" algorithms in `consensusService.ts`
+- [x] T020 [US4] Update `VoteResults.tsx` to display consensus based on the selected algorithm
+- [x] T021 [US4] Add unit tests for consensus algorithms in `tests/unit/services/consensusService.test.ts`
 
 ---
 
@@ -94,10 +94,10 @@
 
 **Purpose**: Final touches, persistence, and UI refinement.
 
-- [ ] T022 Implement `localStorage` persistence for Host settings in `src/services/sessionManager.ts`
-- [ ] T023 [P] Add "More Info Needed" card toggle to `SettingsPanel.tsx` and `scales.ts` logic
-- [ ] T024 [P] Finalize layout and styling of `SettingsPanel.tsx` using Tailwind CSS
-- [ ] T025 [P] Add integration test for end-to-end settings synchronization in `tests/integration/session-config.test.ts`
+- [x] T022 Implement `localStorage` persistence for Host settings in `src/services/sessionManager.ts`
+- [x] T023 [P] Add "More Info Needed" card toggle to `SettingsPanel.tsx` and `scales.ts` logic
+- [x] T024 [P] Finalize layout and styling of `SettingsPanel.tsx` using Tailwind CSS
+- [x] T025 [P] Add integration test for end-to-end settings synchronization in `tests/integration/session-config.test.ts`
 
 ---
 

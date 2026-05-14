@@ -2,6 +2,7 @@ export type Role = 'host' | 'peer'
 export type ConnectionStatus = 'connected' | 'disconnected'
 export type VoteStatus = 'none' | 'voted'
 export type SessionStatus = 'active' | 'closed'
+export type ConsensusAlgorithm = 'mode' | 'average' | 'weighted'
 
 export interface Participant {
   id: string
@@ -16,4 +17,12 @@ export interface Session {
   hostId: string
   status: SessionStatus
   participants: Participant[]
+}
+
+export interface SessionSettings {
+  scaleId: string
+  autoRevealEnabled: boolean
+  isLocked: boolean
+  consensusAlgorithm: ConsensusAlgorithm
+  showMoreInfoNeeded: boolean
 }

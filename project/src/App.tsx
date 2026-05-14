@@ -16,17 +16,20 @@ import { createPeer, connectToPeer } from './services/peerConnectionService'
 import { addParticipant, removeParticipant, broadcastPresenceUpdate } from './services/roomService'
 import { sendMessage, parseMessage } from './services/messageProtocol'
 import { parseRoomIdFromHash } from './utils/deepLink'
+import { useBacklog } from './hooks/useBacklog'
+import { useRoomSettings } from './hooks/useRoomSettings'
 import type { RoomParticipant } from './types/room'
 import type { VoteScaleId, Item, VotingRound } from './types/voting'
 import type { ExportedItem } from './types/export'
 import type { JiraConfig, JiraIssue } from './types/jira'
+import type { BacklogItem } from './types/item'
+import type { SessionSettings } from './types/session'
 import { startNewRound, castVote, getCurrentRound, setRevealed, allVoted, clearRound, removeVote, setConsensus } from './services/votingService'
 import { calculateConsensus } from './services/consensusService'
 import { getScale } from './utils/scales'
+import { createItem } from './services/itemService'
 
 type View = 'landing' | 'host-dashboard' | 'peer-dashboard' | 'home' | 'connection-lost'
-
-const SCALE_ID: VoteScaleId = 'fibonacci'
 
 function App() {
   const [view, setView] = useState<View>('landing')
@@ -38,14 +41,18 @@ function App() {
   const { room, initRoom, setStatus } = useRoom()
   const { participants, updateParticipants } = usePresence()
 
+  const { items: backlogItems, addItem, updateItem, deleteItem, moveUp, moveDown, replaceItems } = useBacklog()
+  const { settings, updateSetting } = useRoomSettings()
   const [currentRound, setCurrentRound] = useState<VotingRound | null>(null)
   const [selectedValue, setSelectedValue] = useState<number | string | null>(null)
-  const [items, setItems] = useState<Item[]>([
-    { id: 'item-1', key: 'PROJ-1', summary: 'Initial item', isActive: true },
-  ])
-  const [activeItemId, setActiveItemId] = useState<string>('item-1')
+  const [activeItemId, setActiveItemId] = useState<string>('')
   const [revealedVotes, setRevealedVotes] = useState<{ participantId: string; participantName: string; value: number | string }[]>([])
   const [jiraConfig, setJiraConfig] = useState<JiraConfig | null>(null)
+
+  const items: Item[] = backlogItems.map((bi) => ({
+    ...bi,
+    isActive: bi.id === activeItemId,
+  }))
 
   useBeforeUnload(view === 'host-dashboard')
 
@@ -54,6 +61,9 @@ function App() {
 
   const participantsRef = useRef<RoomParticipant[]>(participants)
   participantsRef.current = participants
+
+  const settingsRef = useRef<SessionSettings>(settings)
+  settingsRef.current = settings
 
   useEffect(() => {
     const roomId = parseRoomIdFromHash()
@@ -68,10 +78,52 @@ function App() {
     updateParticipants(newRoom.participants)
     setPeer(peerInstance)
     setPeerId(id)
-    const round = startNewRound(activeItemId, SCALE_ID)
-    setCurrentRound(round)
     setView('host-dashboard')
-  }, [initRoom, updateParticipants, activeItemId])
+  }, [initRoom, updateParticipants])
+
+  const broadcastMessage = useCallback((msg: import('./types/messages').Message) => {
+    connectionsRef.current.forEach((conn) => {
+      if (conn.open) sendMessage(conn, msg)
+    })
+  }, [])
+
+  const backlogItemsRef = useRef(backlogItems)
+  backlogItemsRef.current = backlogItems
+
+  const handleAddItem = useCallback((summary: string, key: string) => {
+    const newItem = createItem(summary, key, 'manual', backlogItemsRef.current.length)
+    addItem(summary, key)
+    broadcastMessage({ type: 'item-create', item: newItem })
+  }, [addItem, broadcastMessage])
+
+  const handleUpdateItem = useCallback((itemId: string, summary: string, key: string) => {
+    updateItem(itemId, { summary, key })
+    const item = backlogItemsRef.current.find((i) => i.id === itemId)
+    if (item) {
+      broadcastMessage({ type: 'item-update', item: { ...item, summary, key } })
+    }
+  }, [updateItem, broadcastMessage])
+
+  const handleDeleteItem = useCallback((itemId: string) => {
+    deleteItem(itemId)
+    broadcastMessage({ type: 'item-delete', itemId })
+  }, [deleteItem, broadcastMessage])
+
+  const handleMoveUp = useCallback((itemId: string) => {
+    moveUp(itemId)
+    broadcastMessage({ type: 'item-reorder', items: backlogItemsRef.current })
+  }, [moveUp, broadcastMessage])
+
+  const handleMoveDown = useCallback((itemId: string) => {
+    moveDown(itemId)
+    broadcastMessage({ type: 'item-reorder', items: backlogItemsRef.current })
+  }, [moveDown, broadcastMessage])
+
+  const handleSettingsChange = useCallback((updates: Partial<SessionSettings>) => {
+    updateSetting(updates)
+    const updated = { ...settingsRef.current, ...updates }
+    broadcastMessage({ type: 'settings-updated', settings: updated })
+  }, [updateSetting, broadcastMessage])
 
   const handlePeerConnected = useCallback((conn: DataConnection) => {
     conn.on('data', (raw: unknown) => {
@@ -79,6 +131,11 @@ function App() {
       if (!msg) return
 
       if (msg.type === 'join') {
+        if (settingsRef.current.isLocked) {
+          sendMessage(conn, { type: 'room-locked' })
+          conn.close()
+          return
+        }
         const participant = participantsRef.current.find((p) => p.id === conn.peer)
         if (!participant) {
           const newParticipant = addParticipant(room!, conn.peer, msg.name)
@@ -92,6 +149,9 @@ function App() {
             const scale = getScale(round.scaleId)
             sendMessage(conn, { type: 'focus-item', itemId: round.itemId })
           }
+          if (backlogItemsRef.current.length > 0) {
+            sendMessage(conn, { type: 'items-sync', items: backlogItemsRef.current })
+          }
           broadcastPresenceUpdate(connectionsRef.current, room!.participants)
           updateParticipants([...room!.participants])
         }
@@ -103,7 +163,7 @@ function App() {
         const round = getCurrentRound()
         if (round) {
           setCurrentRound({ ...round })
-          if (round.autoReveal && allVoted(participantsRef.current.length)) {
+          if (settingsRef.current.autoRevealEnabled && allVoted(participantsRef.current.length)) {
             handleReveal()
           }
         }
@@ -168,7 +228,7 @@ function App() {
           if (msg.type === 'joined') {
             updateParticipants(msg.participants)
             setConnectionStatus('')
-            const round = getCurrentRound() || startNewRound(activeItemId, SCALE_ID)
+            const round = getCurrentRound() || startNewRound(activeItemId, settings.scaleId as VoteScaleId)
             setCurrentRound(round)
             setView('peer-dashboard')
           }
@@ -207,7 +267,7 @@ function App() {
             setActiveItemId(msg.itemId)
             setSelectedValue(null)
             setRevealedVotes([])
-            const round = startNewRound(msg.itemId, SCALE_ID)
+            const round = startNewRound(msg.itemId, settings.scaleId as VoteScaleId)
             setCurrentRound(round)
           }
 
@@ -230,6 +290,34 @@ function App() {
               setCurrentRound({ ...round, isRevealed: false, votes: [], consensus: null })
             }
           }
+
+          if (msg.type === 'items-sync') {
+            replaceItems(msg.items)
+          }
+
+          if (msg.type === 'item-create') {
+            addItem(msg.item.summary, msg.item.key)
+          }
+
+          if (msg.type === 'item-update') {
+            updateItem(msg.item.id, { summary: msg.item.summary, key: msg.item.key })
+          }
+
+          if (msg.type === 'item-delete') {
+            deleteItem(msg.itemId)
+          }
+
+          if (msg.type === 'item-reorder') {
+            replaceItems(msg.items)
+          }
+
+          if (msg.type === 'settings-updated') {
+            updateSetting(msg.settings)
+          }
+
+          if (msg.type === 'room-locked') {
+            setConnectionStatus('Room is Locked')
+          }
         })
 
         conn.on('close', () => {
@@ -239,7 +327,7 @@ function App() {
         setConnectionStatus('Room Not Found')
       }
     })
-  }, [updateParticipants, selectedValue, activeItemId])
+  }, [updateParticipants, selectedValue, activeItemId, replaceItems, addItem, updateItem, deleteItem, updateSetting])
 
   const handlePeerVote = useCallback((value: number | string) => {
     setSelectedValue(value)
@@ -253,7 +341,7 @@ function App() {
     const round = getCurrentRound()
     if (!round) return
     setRevealed(true)
-    const result = calculateConsensus(round.votes, round.scaleId)
+    const result = calculateConsensus(round.votes, round.scaleId, settingsRef.current.consensusAlgorithm)
     const votesWithNames = round.votes.map((v) => ({
       participantId: v.participantId,
       participantName: participantsRef.current.find((p) => p.id === v.participantId)?.name || '',
@@ -274,10 +362,11 @@ function App() {
   }, [])
 
   const handleFocusItem = useCallback((itemId: string) => {
+    if (!itemId) return
     setActiveItemId(itemId)
     setSelectedValue(null)
     setRevealedVotes([])
-    const round = startNewRound(itemId, SCALE_ID)
+    const round = startNewRound(itemId, settings.scaleId as VoteScaleId)
     setCurrentRound(round)
     connectionsRef.current.forEach((conn) => {
       if (conn.open) sendMessage(conn, { type: 'focus-item', itemId })
@@ -285,6 +374,7 @@ function App() {
   }, [])
 
   const handleNextItem = useCallback(() => {
+    if (items.length === 0) return
     const currentIdx = items.findIndex((i) => i.id === activeItemId)
     const nextIdx = (currentIdx + 1) % items.length
     handleFocusItem(items[nextIdx].id)
@@ -379,14 +469,10 @@ function App() {
   }, [])
 
   const handleAddIssues = useCallback((jiraIssues: JiraIssue[]) => {
-    const newItems: Item[] = jiraIssues.map((ji, i) => ({
-      id: `jira-${ji.key}-${i}`,
-      key: ji.key,
-      summary: ji.summary,
-      isActive: false,
-    }))
-    setItems((prev) => [...prev, ...newItems])
-  }, [])
+    jiraIssues.forEach((ji) => {
+      addItem(ji.summary, ji.key, 'jira')
+    })
+  }, [addItem])
 
   if (view === 'host-dashboard' && room) {
     const round = currentRound
@@ -397,7 +483,7 @@ function App() {
           onCloseSession={handleHostClose}
           roomId={room.roomId}
           participants={participants}
-          scaleId={SCALE_ID}
+          scaleId={settings.scaleId as VoteScaleId}
           isRevealed={round?.isRevealed || false}
           revealedVotes={revealedVotes}
           consensus={round?.consensus || null}
@@ -410,6 +496,13 @@ function App() {
           onRevote={handleRevote}
           exportItems={exportItems}
           onConsensusChange={handleConsensusChange}
+          onAddItem={handleAddItem}
+          onUpdateItem={handleUpdateItem}
+          onDeleteItem={handleDeleteItem}
+          onMoveUp={handleMoveUp}
+          onMoveDown={handleMoveDown}
+          settings={settings}
+          onSettingsChange={handleSettingsChange}
         />
         <div className="mt-6 space-y-4">
           <details className="border rounded-lg">
@@ -434,7 +527,7 @@ function App() {
     return (
       <PeerDashboard
         onExit={handlePeerExit}
-        scaleId={SCALE_ID}
+        scaleId={settings.scaleId as VoteScaleId}
         selectedValue={selectedValue}
         isRevealed={round?.isRevealed || false}
         revealedVotes={revealedVotes}
@@ -442,6 +535,8 @@ function App() {
         activeItemKey={activeItem?.key}
         activeItemSummary={activeItem?.summary}
         onVote={handlePeerVote}
+        items={backlogItems}
+        activeItemId={activeItemId}
       />
     )
   }

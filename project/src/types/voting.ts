@@ -21,9 +21,8 @@ export interface VotingRound {
   consensus: number | string | null
 }
 
-export interface Item {
-  id: string
-  key: string
-  summary: string
+import type { BacklogItem } from './item'
+
+export interface Item extends BacklogItem {
   isActive: boolean
 }

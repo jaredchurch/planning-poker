@@ -16,6 +16,20 @@ export type VotingMessage =
   | { type: 're-vote' }
   | { type: 'next-item' }
 
+import type { BacklogItem } from './item'
+import type { SessionSettings } from './session'
+
+export type ItemMessage =
+  | { type: 'item-create'; item: BacklogItem }
+  | { type: 'item-update'; item: BacklogItem }
+  | { type: 'item-delete'; itemId: string }
+  | { type: 'item-reorder'; items: BacklogItem[] }
+  | { type: 'items-sync'; items: BacklogItem[] }
+
+export type SettingsMessage =
+  | { type: 'settings-updated'; settings: SessionSettings }
+  | { type: 'room-locked' }
+
 export type Message =
   | { type: 'exit' }
   | { type: 'session-closed' }
@@ -24,3 +38,5 @@ export type Message =
   | { type: 'pong' }
   | RoomMessage
   | VotingMessage
+  | ItemMessage
+  | SettingsMessage

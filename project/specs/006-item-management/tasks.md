@@ -13,17 +13,17 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create directory structure for backlog components in `src/components/backlog/`
-- [ ] T002 [P] Define `BacklogItem` type in `src/types/item.ts`
-- [ ] T003 [P] Add UUID utility for manual item IDs in `src/utils/uuid.ts`
+- [x] T001 Create directory structure for backlog components in `src/components/backlog/`
+- [x] T002 [P] Define `BacklogItem` type in `src/types/item.ts`
+- [x] T003 [P] Add UUID utility for manual item IDs in `src/utils/uuid.ts`
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
-- [ ] T004 Implement core backlog logic in `src/services/itemService.ts` with LocalStorage integration
-- [ ] T005 [P] Implement `ITEM_CREATE`, `ITEM_UPDATE`, `ITEM_DELETE`, and `ITEM_REORDER` P2P message handlers in `src/services/itemService.ts`
-- [ ] T006 Create `useBacklog` hook in `src/hooks/useBacklog.ts` to expose item state and actions
+- [x] T004 Implement core backlog logic in `src/services/itemService.ts` with LocalStorage integration
+- [x] T005 [P] Implement `ITEM_CREATE`, `ITEM_UPDATE`, `ITEM_DELETE`, and `ITEM_REORDER` P2P message handlers in `src/services/itemService.ts`
+- [x] T006 Create `useBacklog` hook in `src/hooks/useBacklog.ts` to expose item state and actions
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -37,11 +37,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Create `ItemForm.tsx` in `src/components/backlog/ItemForm.tsx` for adding/editing items
-- [ ] T008 [US1] Create `BacklogItem.tsx` in `src/components/backlog/BacklogItem.tsx` to display individual items
-- [ ] T009 [US1] Create `BacklogPanel.tsx` in `src/components/backlog/BacklogPanel.tsx` to containerize the list
-- [ ] T010 [US1] Integrate `BacklogPanel` into the Host and Peer dashboards
-- [ ] T011 [US1] Add unit tests for item creation and sync in `tests/unit/services/itemService.test.ts`
+- [x] T007 [US1] Create `ItemForm.tsx` in `src/components/backlog/ItemForm.tsx` for adding/editing items
+- [x] T008 [US1] Create `BacklogItem.tsx` in `src/components/backlog/BacklogItem.tsx` to display individual items
+- [x] T009 [US1] Create `BacklogPanel.tsx` in `src/components/backlog/BacklogPanel.tsx` to containerize the list
+- [x] T010 [US1] Integrate `BacklogPanel` into the Host and Peer dashboards
+- [x] T011 [US1] Add unit tests for item creation and sync in `tests/unit/services/itemService.test.ts`
 
 **Checkpoint**: User Story 1 fully functional and testable.
 
@@ -55,9 +55,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Update `ItemForm.tsx` to support edit mode
-- [ ] T013 [US2] Implement edit action in `BacklogItem.tsx`
-- [ ] T014 [US2] Ensure `ITEM_UPDATE` P2P broadcast triggers on save
+- [x] T012 [US2] Update `ItemForm.tsx` to support edit mode
+- [x] T013 [US2] Implement edit action in `BacklogItem.tsx`
+- [x] T014 [US2] Ensure `ITEM_UPDATE` P2P broadcast triggers on save
 
 ---
 
@@ -69,9 +69,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T015 [US3] Implement delete action in `BacklogItem.tsx` with a confirmation dialog
-- [ ] T016 [US3] Add "Active Item" check: if deleted item is active, trigger `CLEAR_ACTIVE_ITEM` in `itemService.ts`
-- [ ] T017 [US3] Add unit test for deletion and active item cleanup in `tests/unit/services/itemService.test.ts`
+- [x] T015 [US3] Implement delete action in `BacklogItem.tsx` with a confirmation dialog
+- [x] T016 [US3] Add "Active Item" check: if deleted item is active, trigger `CLEAR_ACTIVE_ITEM` in `itemService.ts`
+- [x] T017 [US3] Add unit test for deletion and active item cleanup in `tests/unit/services/itemService.test.ts`
 
 ---
 
@@ -83,9 +83,9 @@
 
 ### Implementation for User Story 4
 
-- [ ] T018 [US4] Implement reordering UI in `BacklogItem.tsx` (Move Up/Down buttons)
-- [ ] T019 [US4] Implement `ITEM_REORDER` logic in `itemService.ts` using `arrayMove` pattern
-- [ ] T020 [US4] Add unit tests for reordering logic and index updates in `tests/unit/services/itemService.test.ts`
+- [x] T018 [US4] Implement reordering UI in `BacklogItem.tsx` (Move Up/Down buttons)
+- [x] T019 [US4] Implement `ITEM_REORDER` logic in `itemService.ts` using `arrayMove` pattern
+- [x] T020 [US4] Add unit tests for reordering logic and index updates in `tests/unit/services/itemService.test.ts`
 
 ---
 
@@ -93,10 +93,10 @@
 
 **Purpose**: Final touches and UI refinement.
 
-- [ ] T021 [P] Implement optimistic UI updates for Host actions in `useBacklog.ts`
-- [ ] T022 [P] Add loading states and error handling for item sync
-- [ ] T023 [P] Finalize Tailwind styling for backlog components
-- [ ] T024 [P] Add integration test for end-to-end item management in `tests/integration/item-management.test.ts`
+- [x] T021 [P] Implement optimistic UI updates for Host actions in `useBacklog.ts`
+- [x] T022 [P] Add loading states and error handling for item sync
+- [x] T023 [P] Finalize Tailwind styling for backlog components
+- [x] T024 [P] Add integration test for end-to-end item management in `tests/integration/item-management.test.ts`
 
 ---
 

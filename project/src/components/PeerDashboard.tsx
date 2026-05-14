@@ -1,7 +1,9 @@
 import { ExitButton } from './ExitButton'
 import { VotingBoard } from './VotingBoard'
 import { VoteResults } from './VoteResults'
+import { BacklogPanel } from './backlog/BacklogPanel'
 import type { VoteScaleId } from '../types/voting'
+import type { BacklogItem } from '../types/item'
 
 interface VoteResult {
   participantId: string
@@ -19,6 +21,8 @@ interface PeerDashboardProps {
   activeItemKey?: string
   activeItemSummary?: string
   onVote: (value: number | string) => void
+  items?: BacklogItem[]
+  activeItemId?: string | null
 }
 
 export function PeerDashboard({
@@ -31,6 +35,8 @@ export function PeerDashboard({
   activeItemKey,
   activeItemSummary,
   onVote,
+  items = [],
+  activeItemId = null,
 }: PeerDashboardProps) {
   return (
     <div className="p-4 max-w-lg mx-auto">
@@ -58,6 +64,19 @@ export function PeerDashboard({
         consensus={consensus}
         isRevealed={isRevealed}
       />
+
+      <div className="mt-6">
+        <BacklogPanel
+          items={items}
+          activeItemId={activeItemId}
+          onAddItem={() => {}}
+          onUpdateItem={() => {}}
+          onDeleteItem={() => {}}
+          onMoveUp={() => {}}
+          onMoveDown={() => {}}
+          onFocusItem={() => {}}
+        />
+      </div>
     </div>
   )
 }

@@ -1,15 +1,18 @@
 import { CloseSessionButton } from './CloseSessionButton'
 import { RevealButton } from './RevealButton'
 import { VoteResults } from './VoteResults'
-import { ItemList } from './ItemList'
 import { FocusButton } from './FocusButton'
 import { ParticipantList } from './ParticipantList'
 import { CopyLinkButton } from './CopyLinkButton'
 import { ExportButton } from './ExportButton'
 import { ConsensusEditor } from './ConsensusEditor'
+import { BacklogPanel } from './backlog/BacklogPanel'
+import { SettingsPanel } from './settings/SettingsPanel'
 import type { VoteScaleId, Item, VotingRound } from '../types/voting'
 import type { RoomParticipant } from '../types/room'
 import type { ExportedItem } from '../types/export'
+import type { BacklogItem } from '../types/item'
+import type { SessionSettings } from '../types/session'
 
 interface VoteResult {
   participantId: string
@@ -34,6 +37,13 @@ interface HostDashboardProps {
   onRevote: () => void
   exportItems: ExportedItem[]
   onConsensusChange: (value: number | string | null) => void
+  onAddItem?: (summary: string, key: string) => void
+  onUpdateItem?: (itemId: string, summary: string, key: string) => void
+  onDeleteItem?: (itemId: string) => void
+  onMoveUp?: (itemId: string) => void
+  onMoveDown?: (itemId: string) => void
+  settings: SessionSettings
+  onSettingsChange: (updates: Partial<SessionSettings>) => void
 }
 
 export function HostDashboard({
@@ -53,6 +63,13 @@ export function HostDashboard({
   onRevote,
   exportItems,
   onConsensusChange,
+  onAddItem,
+  onUpdateItem,
+  onDeleteItem,
+  onMoveUp,
+  onMoveDown,
+  settings,
+  onSettingsChange,
 }: HostDashboardProps) {
   return (
     <div className="p-4 max-w-lg mx-auto">
@@ -75,11 +92,20 @@ export function HostDashboard({
         <ConsensusEditor value={consensus} onChange={onConsensusChange} />
       </div>
 
-      <ItemList
-        items={items}
-        activeItemId={activeItemId}
-        onFocusItem={onFocusItem}
-      />
+      <SettingsPanel settings={settings} onSettingsChange={onSettingsChange} />
+
+      <div className="mt-4">
+        <BacklogPanel
+          items={items as unknown as BacklogItem[]}
+          activeItemId={activeItemId}
+          onAddItem={onAddItem || (() => {})}
+          onUpdateItem={onUpdateItem || (() => {})}
+          onDeleteItem={onDeleteItem || (() => {})}
+          onMoveUp={onMoveUp || (() => {})}
+          onMoveDown={onMoveDown || (() => {})}
+          onFocusItem={onFocusItem}
+        />
+      </div>
 
       <VoteResults
         votes={revealedVotes}
