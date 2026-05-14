@@ -13,17 +13,17 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create directory structure for layout components in `src/components/layout/`
-- [ ] T002 [P] Define `ViewportState` and `DeviceType` types in `src/types/layout.ts`
-- [ ] T003 Configure Tailwind CSS custom breakpoints if necessary in `tailwind.config.js` (referencing research.md)
+- [X] T001 Create directory structure for layout components in `src/components/layout/`
+- [X] T002 [P] Define `ViewportState` and `DeviceType` types in `src/types/layout.ts`
+- [X] T003 Configure Tailwind CSS custom breakpoints if necessary in `tailwind.config.js` (referencing research.md)
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
 **Purpose**: Core infrastructure for viewport detection and global shell
 
-- [ ] T004 Implement `useBreakpoint` hook in `src/hooks/useBreakpoint.ts` for real-time viewport tracking
-- [ ] T005 Implement base `AppShell.tsx` in `src/components/layout/AppShell.tsx` as the root container
-- [ ] T006 Implement `Navigation.tsx` in `src/components/layout/Navigation.tsx` with session metadata (UI Contract)
+- [X] T004 Implement `useBreakpoint` hook in `src/hooks/useBreakpoint.ts` for real-time viewport tracking
+- [X] T005 Implement base `AppShell.tsx` in `src/components/layout/AppShell.tsx` as the root container
+- [X] T006 Implement `Navigation.tsx` in `src/components/layout/Navigation.tsx` with session metadata (UI Contract)
 
 **Checkpoint**: Foundation ready - application shell is established and responsive state is available.
 
@@ -37,11 +37,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Implement `MobileDrawer.tsx` in `src/components/layout/MobileDrawer.tsx`
-- [ ] T008 [US1] Update `AppShell.tsx` to conditionally render the `MobileDrawer` for participants on small screens
-- [ ] T009 [US1] Implement "Participants" count toggle in `Navigation.tsx` to trigger the drawer
-- [ ] T010 [US1] Ensure all buttons and cards in `VotingBoard.tsx` meet the 44x44px touch target requirement
-- [ ] T011 [US1] Add responsive unit tests for `useBreakpoint` in `tests/unit/hooks/useBreakpoint.test.ts`
+- [X] T007 [US1] Implement `MobileDrawer.tsx` in `src/components/layout/MobileDrawer.tsx`
+- [X] T008 [US1] Update `AppShell.tsx` to conditionally render the `MobileDrawer` for participants on small screens
+- [X] T009 [US1] Implement "Participants" count toggle in `Navigation.tsx` to trigger the drawer
+- [X] T010 [US1] Ensure all buttons and cards in `VotingBoard.tsx` meet the 44x44px touch target requirement
+- [X] T011 [US1] Add responsive unit tests for `useBreakpoint` in `tests/unit/hooks/useBreakpoint.test.ts`
 
 **Checkpoint**: User Story 1 (Mobile) fully functional.
 
@@ -55,10 +55,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T012 [US3] Implement `ResponsiveGrid.tsx` in `src/components/layout/ResponsiveGrid.tsx` with adaptive column counts
-- [ ] T013 [US3] Configure `ResponsiveGrid` in the Host Dashboard to use 3 columns on Desktop and 2 on Tablet
-- [ ] T014 [US3] Implement sidebar behaviors for Backlog and Participants on desktop resolutions
-- [ ] T015 [US3] Add "Large Backlog Title" truncation logic in `BacklogItem.tsx`
+- [X] T012 [US3] Implement `ResponsiveGrid.tsx` in `src/components/layout/ResponsiveGrid.tsx` with adaptive column counts
+- [X] T013 [US3] Configure `ResponsiveGrid` in the Host Dashboard to use 3 columns on Desktop and 2 on Tablet
+- [X] T014 [US3] Implement sidebar behaviors for Backlog and Participants on desktop resolutions
+- [X] T015 [US3] Add "Large Backlog Title" truncation logic in `BacklogItem.tsx`
 
 ---
 
@@ -70,9 +70,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Create `Transition.tsx` wrapper in `src/components/shared/Transition.tsx` using Tailwind transitions
-- [ ] T017 [US2] Wrap screen-level components (Landing, Join, Dashboard) in `Transition` within `AppShell.tsx`
-- [ ] T018 [US2] Implement session termination overlay/notification in `AppShell.tsx`
+- [X] T016 [US2] Create `Transition.tsx` wrapper in `src/components/shared/Transition.tsx` using Tailwind transitions
+- [X] T017 [US2] Wrap screen-level components (Landing, Join, Dashboard) in `Transition` within `AppShell.tsx`
+- [X] T018 [US2] Implement session termination overlay/notification in `AppShell.tsx`
 
 ---
 
@@ -80,10 +80,10 @@
 
 **Purpose**: Final refinements and cross-browser verification.
 
-- [ ] T019 [P] Implement "Connection Lost" modal overlay in `src/components/layout/AppShell.tsx`
-- [ ] T020 [P] Optimize re-renders on window resize within the `useBreakpoint` hook
+- [X] T019 [P] Implement "Connection Lost" modal overlay in `src/components/layout/AppShell.tsx`
+- [X] T020 [P] Optimize re-renders on window resize within the `useBreakpoint` hook
 - [ ] T021 [P] Verify 60fps performance for transitions on lower-end mobile devices
-- [ ] T022 [P] Create responsive layout integration tests in `tests/integration/responsive-layout.spec.ts`
+- [X] T022 [P] Create responsive layout integration tests in `tests/integration/responsive-layout.spec.ts`
 
 ---
 

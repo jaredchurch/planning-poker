@@ -18,9 +18,11 @@ export function ItemList({ items, activeItemId, onFocusItem }: ItemListProps) {
               ${item.id === activeItemId ? 'bg-blue-100 border border-blue-300' : 'hover:bg-gray-50'}`}
             onClick={() => onFocusItem(item.id)}
           >
-            <span>
+            <span className="min-w-0">
               <span className="font-mono text-sm text-gray-500">{item.key}</span>{' '}
-              {item.summary}
+              <span className="truncate inline-block align-bottom max-w-[200px] lg:max-w-[300px]" title={item.summary}>
+                {item.summary}
+              </span>
             </span>
             {item.id === activeItemId && (
               <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded">

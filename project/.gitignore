@@ -17,5 +17,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Temp files
+*.tmp
+*.swp
+
 # Test coverage
 coverage/
