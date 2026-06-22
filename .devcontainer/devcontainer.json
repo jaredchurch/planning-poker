@@ -1,6 +1,6 @@
 {
 	"image": "ghcr.io/jaredchurch/base:v3",
-	//"postCreateCommand": "chmod u+x ./.devcontainer/post-create.sh && ./.devcontainer/post-create.sh",
+	"postCreateCommand": "chmod u+x ./.devcontainer/post-create.sh && ./.devcontainer/post-create.sh",
 	"features": {
 		//"ghcr.io/devcontainers/features/node:1": {},
 		//"ghcr.io/devcontainers/features/python:1": {
