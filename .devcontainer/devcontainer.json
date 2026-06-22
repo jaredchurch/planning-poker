@@ -1,23 +1,8 @@
 {
 	"image": "ghcr.io/jaredchurch/base:v3",
-	//"postCreateCommand": "chmod u+x ./.devcontainer/post-create.sh && ./.devcontainer/post-create.sh",
 	"features": {
-		//"ghcr.io/devcontainers/features/node:1": {},
-		//"ghcr.io/devcontainers/features/python:1": {
-        //	"installTools": "true",
-        //	"toolsToInstall": "uv,ruff,mypy"
-    	//},
 		"./features/opencode": {},
+		"./features/spec-kit": {},
 		"./features/gemini": {}
 	}
-	//,
-	//"overrideFeatureInstallOrder": [
-	//	"ghcr.io/devcontainers/features/node",
-	//	"ghcr.io/devcontainers/features/python"
-	//],
-	//"containerEnv": {
-	//	"LANG": "en_NZ.UTF-8",
-	//	"LC_ALL": "en_NZ.UTF-8",
-	//	"TZ": "Pacific/Auckland"
-	//}
 }
